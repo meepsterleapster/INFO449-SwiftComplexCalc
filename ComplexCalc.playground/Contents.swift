@@ -29,13 +29,7 @@ print("Welcome back to the UW Calculator")
 //:
 class Calculator {
     
-    //    var lhs : Int;
-    //    var rhs : Int;
-    //    init(lhs : Int, rhs : Int){
-    //        self.lhs = lhs;
-    //        self.rhs = rhs;
-    //    }
-    
+
     // Le basics
     func add(lhs : Int, rhs : Int) -> Int {
         return lhs + rhs;
@@ -86,6 +80,7 @@ class Calculator {
     
     func avg(_ numArray: [Int]) -> Int{
         var total : Int = 0;
+        if numArray.isEmpty {return 0;}
         for num in numArray{
             total += num;
         }
@@ -142,6 +137,16 @@ let calc = Calculator()
 //: Keep in mind that writing new tests may reveal ambiguity in the specification above--if that's the case, document the ambiguity, declare what you think *should* happen, and write the test to test for it.
 
 // ===== Your tests go here
+
+// avg on empty array, expect 0 to be returned
+calc.avg([]) == 0
+
+// multiply on an even array of negatives, expect a positive Int returned
+calc.multiply([-2,-4,-3,-2]) == 48
+
+// multiply on an odd array of negatives, expect a negative Int returned
+calc.multiply([-2,-3,-1]) == -6
+
 
 //: ---
 //: ## Test code block
