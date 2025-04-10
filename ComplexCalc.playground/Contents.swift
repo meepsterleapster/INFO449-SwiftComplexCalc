@@ -29,7 +29,6 @@ print("Welcome back to the UW Calculator")
 //:
 class Calculator {
     
-
     // Le basics
     func add(lhs : Int, rhs : Int) -> Int {
         return lhs + rhs;
@@ -41,6 +40,10 @@ class Calculator {
         return lhs * rhs;
     }
     func divide(lhs : Int, rhs : Int) -> Int {
+        guard rhs != 0 else {
+                    print("can't divide by zero")
+                    return 0
+                }
         return lhs / rhs;
     }
     
@@ -147,7 +150,11 @@ calc.multiply([-2,-4,-3,-2]) == 48
 // multiply on an odd array of negatives, expect a negative Int returned
 calc.multiply([-2,-3,-1]) == -6
 
+// Test a beg value of the negative variety, expect correct value
+calc.mathOp(args: [3,3,2],beg:-2,op: { $0 * $1 }) == -36
 
+// Test Divding by zero, rudimentry knowledge of error handling, so will just return 0, and print a statment in the function itself...
+calc.divide(lhs: 5, rhs: 0) == 0
 //: ---
 //: ## Test code block
 //: Do not modify the code in this section
